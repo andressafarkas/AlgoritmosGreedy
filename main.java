@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 import Problema2.Problema2;
@@ -31,29 +32,42 @@ public class main {
         System.out.println("Implementação do algoritmo de multiplicação de Strassen para multiplicação de Matrizes:");
         
         Problema2 p2 = new Problema2();
- 
+            Random random = new Random();
+        
         int N = 4; // Definindo o tamanho da Matriz
 
-        int[][] A = { { 1, 2, 3, 4 },
-                      { 4, 3, 0, 1 },
-                      { 5, 6, 1, 1 },
-                      { 0, 2, 5, 6 } };
+        int[][] A = new int[N][N];
+        int[][] B = new int[N][N];
  
-        int[][] B = { { 1, 0, 5, 1 },
-                      { 1, 2, 0, 2 },
-                      { 0, 3, 2, 3 },
-                      { 1, 2, 1, 2 } };
+        // Preencha as matrizes A e B com números inteiros aleatórios
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                A[i][j] = random.nextInt(100); // Gere números inteiros aleatórios de 0 a 99
+                B[i][j] = random.nextInt(100);
+            }
+        }
  
         int[][] C = p2.multiply(A, B);
         
-        System.out.println("Multiplicação das Matrizes A e B: ");
+        System.out.println("Matriz A:");
+        printMatrix(A);
  
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++)
-                System.out.print(C[i][j] + " ");
+        System.out.println("Matriz B:");
+        printMatrix(B);
+        
+        System.out.println("Multiplicação das Matrizes A e B: ");
+        printMatrix(C);
+    }
+    public static void printMatrix(int[][] matrix) {
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
             System.out.println();
         }
-        scanner.close();
     }
 }
     
